@@ -265,6 +265,41 @@
             line-height: 1.9;
             font-weight: 400;
         }
+        .mist-reveal {
+            position: relative;
+            --mist-opacity: 0.76;
+            --mist-y: 16%;
+            --mist-scale: 1.08;
+            --mist-blur: 20px;
+        }
+        .mist-overlay {
+            position: absolute;
+            inset: -14%;
+            z-index: 15;
+            pointer-events: none;
+            opacity: var(--mist-opacity);
+            transform: translate3d(0, var(--mist-y), 0) scale(var(--mist-scale));
+            filter: blur(var(--mist-blur));
+            will-change: transform, opacity, filter;
+            background:
+                radial-gradient(56% 42% at 24% 24%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 44%, rgba(255, 255, 255, 0) 78%),
+                radial-gradient(52% 38% at 78% 52%, rgba(236, 254, 255, 0.88) 0%, rgba(236, 254, 255, 0.46) 42%, rgba(236, 254, 255, 0) 80%),
+                linear-gradient(180deg, rgba(248, 250, 252, 0.8) 0%, rgba(248, 250, 252, 0.5) 54%, rgba(248, 250, 252, 0.1) 100%);
+        }
+        .mist-overlay.card-mist {
+            inset: -12%;
+            background:
+                radial-gradient(62% 46% at 22% 18%, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.62) 42%, rgba(255, 255, 255, 0) 78%),
+                radial-gradient(54% 42% at 76% 56%, rgba(240, 249, 255, 0.84) 0%, rgba(240, 249, 255, 0.4) 45%, rgba(240, 249, 255, 0) 82%),
+                linear-gradient(180deg, rgba(248, 250, 252, 0.78) 0%, rgba(248, 250, 252, 0.5) 58%, rgba(248, 250, 252, 0.12) 100%);
+        }
+        .mist-overlay.media-mist {
+            inset: -16%;
+            background:
+                radial-gradient(58% 48% at 26% 20%, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.42) 45%, rgba(255, 255, 255, 0) 82%),
+                radial-gradient(46% 42% at 78% 60%, rgba(125, 211, 252, 0.42) 0%, rgba(125, 211, 252, 0.16) 40%, rgba(125, 211, 252, 0) 78%),
+                linear-gradient(180deg, rgba(248, 250, 252, 0.6) 0%, rgba(248, 250, 252, 0.2) 52%, rgba(248, 250, 252, 0) 100%);
+        }
         .glass-btn {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -414,6 +449,12 @@
             .brand-sigil-layer {
                 opacity: 0.3;
             }
+            .mist-reveal {
+                --mist-opacity: 0.16;
+                --mist-y: 0%;
+                --mist-scale: 1;
+                --mist-blur: 6px;
+            }
         }
         @media (max-width: 1024px) {
             .strategy-title {
@@ -555,7 +596,8 @@
         </p>
 <div class="relative w-full max-w-5xl mx-auto mb-20 group scroll-reveal perspective-1000">
 <div class="video-aura"></div>
-<div class="relative bg-navy-950 rounded-2xl shadow-video overflow-hidden aspect-video border border-white/20 ring-1 ring-black/5 transform transition-transform duration-700 hover:scale-[1.01]">
+<div class="relative bg-navy-950 rounded-2xl shadow-video overflow-hidden aspect-video border border-white/20 ring-1 ring-black/5 transform transition-transform duration-700 hover:scale-[1.01] mist-reveal" data-mist-start="top 96%" data-mist-end="top 58%" data-mist-from-opacity="0.72" data-mist-to-opacity="0.08" data-mist-from-blur="22" data-mist-to-blur="1.2">
+<div aria-hidden="true" class="mist-overlay media-mist"></div>
 <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
 <img alt="VSL Thumbnail - Surgeons" class="absolute inset-0 w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdDYm7XxrH9IYL4vm-HX9Vs9FOauvES6RRZyObLn1j26EUQXTGzgJjcmr6umoLCMJShcWMl6l-beYT28CfUv586TGQ71GNldakC9f0iCZwfIT_-vwyCYL0-GJgwR8rDqipZnzLWtWvgllwlxNp_AYEopkPxzAH99bCFAXW5-Zbnt0emOA4vys3-1UCwaHUQSWLklreWod2-VTjLIXqpzzapaQPDPy2tkCKKPTABKaSSmADMQKYznCgz3fd1uclYSRpOdAuuKkU"/>
 <div class="relative z-20 group cursor-pointer">
@@ -612,8 +654,9 @@
 <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-50/60 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3"></div>
 <div class="container mx-auto px-6 relative z-10">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
-<div class="group relative p-8 md:p-10 rounded-3xl glass-card strategy-card hover:shadow-soft-card hover:border-cyan-100/50 transition-all duration-700 scroll-reveal">
+<div class="group relative p-8 md:p-10 rounded-3xl glass-card strategy-card hover:shadow-soft-card hover:border-cyan-100/50 transition-all duration-700 scroll-reveal mist-reveal" data-mist-start="top 98%" data-mist-end="top 60%" data-mist-from-opacity="0.86" data-mist-to-opacity="0.16" data-mist-from-blur="26" data-mist-to-blur="1.5">
 <div class="absolute inset-0 bg-gradient-to-b from-white/55 via-white/15 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div aria-hidden="true" class="mist-overlay card-mist"></div>
 <div class="relative z-10">
 <div class="h-16 w-16 md:h-20 md:w-20 mb-6 md:mb-8 flex items-center justify-center strategy-icon-wrap rounded-2xl transition-all duration-500">
 <svg class="w-10 h-10 text-navy-900 icon-draw" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -626,8 +669,9 @@
 <p class="strategy-copy">Sistema predecible para atraer candidatos calificados para cirugía bariátrica, eliminando la dependencia de referidos inestables.</p>
 </div>
 </div>
-<div class="group relative p-8 md:p-10 rounded-3xl glass-card strategy-card hover:shadow-soft-card hover:border-cyan-100/50 transition-all duration-700 scroll-reveal" data-reveal-delay="0.1">
+<div class="group relative p-8 md:p-10 rounded-3xl glass-card strategy-card hover:shadow-soft-card hover:border-cyan-100/50 transition-all duration-700 scroll-reveal mist-reveal" data-reveal-delay="0.1" data-mist-start="top 98%" data-mist-end="top 60%" data-mist-from-opacity="0.84" data-mist-to-opacity="0.14" data-mist-from-blur="24" data-mist-to-blur="1.4">
 <div class="absolute inset-0 bg-gradient-to-b from-white/55 via-white/15 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div aria-hidden="true" class="mist-overlay card-mist"></div>
 <div class="relative z-10">
 <div class="h-16 w-16 md:h-20 md:w-20 mb-6 md:mb-8 flex items-center justify-center strategy-icon-wrap rounded-2xl transition-all duration-500">
 <svg class="w-10 h-10 text-navy-900 icon-draw" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -639,8 +683,9 @@
 <p class="strategy-copy">Panel de control en tiempo real. Visualiza el costo por paciente, tasa de cierre y retorno de inversión exacto.</p>
 </div>
 </div>
-<div class="group relative p-8 md:p-10 rounded-3xl glass-card strategy-card hover:shadow-soft-card hover:border-cyan-100/50 transition-all duration-700 scroll-reveal" data-reveal-delay="0.2">
+<div class="group relative p-8 md:p-10 rounded-3xl glass-card strategy-card hover:shadow-soft-card hover:border-cyan-100/50 transition-all duration-700 scroll-reveal mist-reveal" data-reveal-delay="0.2" data-mist-start="top 98%" data-mist-end="top 60%" data-mist-from-opacity="0.84" data-mist-to-opacity="0.14" data-mist-from-blur="24" data-mist-to-blur="1.4">
 <div class="absolute inset-0 bg-gradient-to-b from-white/55 via-white/15 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div aria-hidden="true" class="mist-overlay card-mist"></div>
 <div class="relative z-10">
 <div class="h-16 w-16 md:h-20 md:w-20 mb-6 md:mb-8 flex items-center justify-center strategy-icon-wrap rounded-2xl transition-all duration-500">
 <svg class="w-10 h-10 text-navy-900 icon-draw" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -666,7 +711,8 @@
 </div>
 <div class="flex flex-col lg:flex-row gap-16 items-center justify-center">
 <div class="w-full lg:w-1/2 scroll-reveal perspective-1000">
-<div class="relative rounded-2xl overflow-hidden shadow-floating border border-white bg-white group hover:rotate-1 transition-transform duration-700">
+<div class="relative rounded-2xl overflow-hidden shadow-floating border border-white bg-white group hover:rotate-1 transition-transform duration-700 mist-reveal" data-mist-start="top 96%" data-mist-end="top 56%" data-mist-from-opacity="0.74" data-mist-to-opacity="0.09" data-mist-from-blur="22" data-mist-to-blur="1.2">
+<div aria-hidden="true" class="mist-overlay media-mist"></div>
 <div class="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/5 transition-colors duration-500 z-10"></div>
 <img alt="Dr. Jonathan Gil Testimonial" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAJpQrWJh_B6q4-2vEcFYgxXRS6p0WbrMETdMJTYdpqDmEjZ2KHkHZqjCvvZ7-3raZvfvNZ_bJ_YJ2zg2QhYe6nYzSoYdKZjjln9Q7h_7OTZq0T64QqWRPRz4nzH2PdY6ZGj1DOm2_QDm0F33kasyG7to3Rn3TJ7S36HmQEqJfDREFrDmBmTe4Y3Kn2WcODHm_OjMCwrgpG4ZZiUsryc8iVH-rE41X61WI-U2stYYD28QICJOYnNu54siajbSi8FZXGuVtvkls"/>
 <div class="absolute inset-0 flex items-center justify-center z-20">
@@ -933,6 +979,57 @@
             gsap.set('.prism-facet', { opacity: 0.12 });
             gsap.set('.prism-link', { opacity: 0.1 });
         }
+        // Partial render effect with moving fog layers
+        const mistElements = document.querySelectorAll('.mist-reveal');
+        mistElements.forEach((element) => {
+            const mistLayer = element.querySelector('.mist-overlay');
+            if (!mistLayer) {
+                return;
+            }
+            const mistStart = element.dataset.mistStart || "top 96%";
+            const mistEnd = element.dataset.mistEnd || "top 60%";
+            const mistFromOpacityRaw = Number.parseFloat(element.dataset.mistFromOpacity || "0.76");
+            const mistToOpacityRaw = Number.parseFloat(element.dataset.mistToOpacity || "0.1");
+            const mistFromBlurRaw = Number.parseFloat(element.dataset.mistFromBlur || "20");
+            const mistToBlurRaw = Number.parseFloat(element.dataset.mistToBlur || "1.5");
+            const mistFromScaleRaw = Number.parseFloat(element.dataset.mistFromScale || "1.08");
+            const mistToScaleRaw = Number.parseFloat(element.dataset.mistToScale || "1");
+            const mistFromY = element.dataset.mistFromY || "16%";
+            const mistToY = element.dataset.mistToY || "-6%";
+            const mistFromOpacity = Number.isNaN(mistFromOpacityRaw) ? 0.76 : mistFromOpacityRaw;
+            const mistToOpacity = Number.isNaN(mistToOpacityRaw) ? 0.1 : mistToOpacityRaw;
+            const mistFromBlur = Number.isNaN(mistFromBlurRaw) ? 20 : mistFromBlurRaw;
+            const mistToBlur = Number.isNaN(mistToBlurRaw) ? 1.5 : mistToBlurRaw;
+            const mistFromScale = Number.isNaN(mistFromScaleRaw) ? 1.08 : mistFromScaleRaw;
+            const mistToScale = Number.isNaN(mistToScaleRaw) ? 1 : mistToScaleRaw;
+            if (prefersReducedMotion) {
+                gsap.set(element, {
+                    "--mist-opacity": Math.max(mistToOpacity, 0.16),
+                    "--mist-y": "0%",
+                    "--mist-scale": 1,
+                    "--mist-blur": `${Math.max(mistToBlur, 6)}px`
+                });
+                return;
+            }
+            gsap.fromTo(element, {
+                "--mist-opacity": mistFromOpacity,
+                "--mist-y": mistFromY,
+                "--mist-scale": mistFromScale,
+                "--mist-blur": `${mistFromBlur}px`
+            }, {
+                "--mist-opacity": mistToOpacity,
+                "--mist-y": mistToY,
+                "--mist-scale": mistToScale,
+                "--mist-blur": `${mistToBlur}px`,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: element,
+                    start: mistStart,
+                    end: mistEnd,
+                    scrub: 1.1
+                }
+            });
+        });
         // General reveal animation
         const revealElements = document.querySelectorAll(".scroll-reveal");
         revealElements.forEach((element) => {
