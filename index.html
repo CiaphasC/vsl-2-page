@@ -3,6 +3,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>911 Medical Marketing - Estrategia para Cirujanos Barietras</title>
+<link href="./favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="./favicon.svg" rel="shortcut icon" type="image/svg+xml"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -98,8 +100,59 @@
             transition: transform 0.45s ease, letter-spacing 0.45s ease;
         }
         .nav-brand {
+            position: relative;
+            isolation: isolate;
             transform: scale(1.07);
             transform-origin: left center;
+        }
+        .brand-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .brand-sigil-layer {
+            position: absolute;
+            inset: -1rem -1.9rem;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.72;
+            will-change: transform, opacity;
+            filter: drop-shadow(0 8px 20px rgba(14, 165, 233, 0.14));
+        }
+        .brand-sigil-layer svg {
+            width: 100%;
+            height: 100%;
+        }
+        .brand-prism {
+            fill: rgba(14, 165, 233, 0.08);
+            stroke: rgba(14, 165, 233, 0.25);
+            stroke-width: 1;
+            opacity: 0.36;
+            transform-box: fill-box;
+            transform-origin: center;
+            will-change: transform, opacity;
+        }
+        .brand-prism.alt {
+            fill: rgba(255, 255, 255, 0.56);
+            stroke: rgba(2, 15, 36, 0.18);
+        }
+        .brand-line {
+            fill: none;
+            stroke: rgba(14, 165, 233, 0.28);
+            stroke-width: 1;
+            stroke-dasharray: 7 12;
+            opacity: 0.24;
+            will-change: transform, opacity;
+        }
+        .brand-node {
+            fill: rgba(14, 165, 233, 0.44);
+            opacity: 0.44;
+            will-change: transform, opacity;
+        }
+        .brand-node.dark {
+            fill: rgba(0, 33, 71, 0.24);
         }
         .nav-strategy-link {
             transform: scale(1.12);
@@ -110,6 +163,9 @@
         .glass-header.is-sticky .nav-strategy-link {
             transform: scale(1);
             letter-spacing: 0.16em;
+        }
+        .glass-header.is-sticky .brand-sigil-layer {
+            opacity: 0.62;
         }
         @media (max-width: 768px) {
             .nav-shell {
@@ -128,6 +184,10 @@
             .glass-header.is-sticky .nav-brand,
             .glass-header.is-sticky .nav-strategy-link {
                 transform: scale(0.92);
+            }
+            .brand-sigil-layer {
+                inset: -0.7rem -1rem;
+                opacity: 0.45;
             }
         }
         .glass-card {
@@ -351,6 +411,9 @@
             .hero-svg-layer {
                 opacity: 0.3;
             }
+            .brand-sigil-layer {
+                opacity: 0.3;
+            }
         }
         @media (max-width: 1024px) {
             .strategy-title {
@@ -385,6 +448,21 @@
 <nav class="fixed w-full z-50 top-0 start-0 glass-header" id="navbar">
 <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 nav-shell">
 <a class="flex items-center gap-3 group nav-brand" href="#">
+<div aria-hidden="true" class="brand-sigil-layer">
+<svg id="brand-prisms" preserveAspectRatio="none" viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg">
+<polygon class="brand-prism" points="22,78 76,42 128,76 80,106"></polygon>
+<polygon class="brand-prism alt" points="144,26 206,12 236,52 166,68"></polygon>
+<polygon class="brand-prism" points="266,66 328,40 378,78 306,102"></polygon>
+<polygon class="brand-prism alt" points="344,18 408,32 434,68 358,58"></polygon>
+<path class="brand-line" d="M34 82L182 42L308 78L422 54"></path>
+<path class="brand-line" d="M74 100L190 54L322 94"></path>
+<circle class="brand-node" cx="82" cy="76" r="3"></circle>
+<circle class="brand-node dark" cx="168" cy="50" r="2.6"></circle>
+<circle class="brand-node" cx="314" cy="78" r="3.1"></circle>
+<circle class="brand-node dark" cx="364" cy="58" r="2.4"></circle>
+</svg>
+</div>
+<div class="brand-content">
 <div class="relative w-10 h-10 flex items-center justify-center">
 <div class="absolute inset-0 bg-primary/10 rounded-full blur-md group-hover:bg-primary/20 transition-all"></div>
 <svg class="w-8 h-8 text-navy-900 group-hover:text-primary transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -394,6 +472,7 @@
 <div class="flex flex-col logo-font">
 <span class="text-xl font-bold text-navy-900 leading-none tracking-tight">911<span class="font-light text-slate-400">MM</span></span>
 <span class="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">Surgeon Elite</span>
+</div>
 </div>
 </a>
 <div class="hidden md:flex">
@@ -601,7 +680,7 @@
 </div>
 </div>
 </div>
-<div class="w-full lg:w-5/12 scroll-reveal" data-reveal-start="top bottom">
+<div class="w-full lg:w-5/12 scroll-reveal" data-reveal-start="top bottom" data-reveal-from-opacity="0.28" data-reveal-from-y="20" data-reveal-from-blur="6" data-reveal-duration="0.78">
 <div class="relative bg-white/60 backdrop-blur-xl p-10 md:p-12 rounded-[2.5rem] border border-white shadow-soft-card group">
 <div class="absolute -top-6 -left-6 text-cyan-100 opacity-50">
 <span class="material-symbols-outlined text-8xl">format_quote</span>
@@ -680,6 +759,71 @@
                 delay: i * 0.5
             });
         });
+        // Navbar brand SVG animation (prisms behind logo)
+        const brandSigil = document.getElementById('brand-prisms');
+        const brandPrisms = document.querySelectorAll('.brand-prism');
+        const brandLines = document.querySelectorAll('.brand-line');
+        const brandNodes = document.querySelectorAll('.brand-node');
+        if (!prefersReducedMotion) {
+            if (brandSigil) {
+                gsap.to(brandSigil, {
+                    x: 7,
+                    y: -4,
+                    duration: 14,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            }
+            brandPrisms.forEach((prism, i) => {
+                gsap.to(prism, {
+                    x: "random(-6, 8)",
+                    y: "random(-5, 6)",
+                    rotation: i % 2 === 0 ? 8 : -8,
+                    scale: "random(0.94, 1.08)",
+                    opacity: "random(0.2, 0.52)",
+                    duration: 6.5 + i * 1.15,
+                    delay: i * 0.2,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            });
+            gsap.set(brandLines, {
+                strokeDashoffset: 180
+            });
+            gsap.to(brandLines, {
+                strokeDashoffset: -180,
+                duration: 8.2,
+                stagger: 1.1,
+                repeat: -1,
+                ease: "none"
+            });
+            brandLines.forEach((line, i) => {
+                gsap.to(line, {
+                    opacity: "random(0.18, 0.4)",
+                    duration: 3.8 + i,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            });
+            brandNodes.forEach((node, i) => {
+                gsap.to(node, {
+                    scale: "random(0.82, 1.45)",
+                    opacity: "random(0.22, 0.7)",
+                    duration: 2.8 + Math.random() * 1.8,
+                    delay: i * 0.12,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut"
+                });
+            });
+        } else {
+            gsap.set('.brand-prism', { opacity: 0.24 });
+            gsap.set('.brand-line', { opacity: 0.18 });
+            gsap.set('.brand-node', { opacity: 0.3 });
+        }
         // Hero SVG background animation (rings, beams and particles)
         if (!prefersReducedMotion) {
             const orbitRings = document.querySelectorAll('.orbit-ring');
@@ -798,22 +942,35 @@
             }
             const revealDelay = Number.parseFloat(element.dataset.revealDelay || "0");
             const revealStart = element.dataset.revealStart || "top 98%";
+            const revealDurationRaw = Number.parseFloat(element.dataset.revealDuration || "0.5");
+            const revealFromYRaw = Number.parseFloat(element.dataset.revealFromY || "16");
+            const revealFromOpacityRaw = Number.parseFloat(element.dataset.revealFromOpacity || "0");
+            const revealFromScaleRaw = Number.parseFloat(element.dataset.revealFromScale || "1");
+            const revealFromBlurRaw = Number.parseFloat(element.dataset.revealFromBlur || "0");
+            const revealDuration = Number.isNaN(revealDurationRaw) ? 0.5 : revealDurationRaw;
+            const revealFromY = Number.isNaN(revealFromYRaw) ? 16 : revealFromYRaw;
+            const revealFromOpacity = Number.isNaN(revealFromOpacityRaw) ? 0 : revealFromOpacityRaw;
+            const revealFromScale = Number.isNaN(revealFromScaleRaw) ? 1 : revealFromScaleRaw;
+            const revealFromBlur = Number.isNaN(revealFromBlurRaw) ? 0 : revealFromBlurRaw;
             gsap.fromTo(element, {
-                y: 16,
-                autoAlpha: 0
+                y: revealFromY,
+                scale: revealFromScale,
+                autoAlpha: revealFromOpacity,
+                filter: revealFromBlur > 0 ? `blur(${revealFromBlur}px)` : "none"
             }, {
                 y: 0,
+                scale: 1,
                 autoAlpha: 1,
-                duration: 0.5,
+                filter: "blur(0px)",
+                duration: revealDuration,
                 delay: Number.isNaN(revealDelay) ? 0 : revealDelay,
                 ease: "power2.out",
-                clearProps: "transform,opacity,visibility",
+                clearProps: "transform,opacity,visibility,filter",
                 scrollTrigger: {
                     trigger: element,
                     start: revealStart,
                     toggleActions: "play none none none",
-                    once: true,
-                    fastScrollEnd: true
+                    once: true
                 }
             });
         });
