@@ -63,10 +63,71 @@
             overflow-x: hidden;
         }
         .glass-header {
-            background: rgba(255, 255, 255, 0.7);
+            background: transparent;
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            border-bottom: 1px solid transparent;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            will-change: transform, opacity, backdrop-filter;
+            transition: opacity 0.45s ease, transform 0.45s ease, background-color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease, backdrop-filter 0.45s ease;
+        }
+        .glass-header.is-sticky {
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 24px rgba(2, 15, 36, 0.08);
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .nav-shell {
+            transform: scale(1.12);
+            transform-origin: top center;
+            will-change: transform;
+            transition: transform 0.45s ease;
+        }
+        .glass-header.is-sticky .nav-shell {
+            transform: scale(1);
+        }
+        .nav-brand,
+        .nav-strategy-link {
+            will-change: transform;
+            transition: transform 0.45s ease, letter-spacing 0.45s ease;
+        }
+        .nav-brand {
+            transform: scale(1.07);
+            transform-origin: left center;
+        }
+        .nav-strategy-link {
+            transform: scale(1.12);
+            transform-origin: right center;
+            letter-spacing: 0.22em;
+        }
+        .glass-header.is-sticky .nav-brand,
+        .glass-header.is-sticky .nav-strategy-link {
+            transform: scale(1);
+            letter-spacing: 0.16em;
+        }
+        @media (max-width: 768px) {
+            .nav-shell {
+                transform: scale(1.06);
+            }
+            .nav-brand {
+                transform: scale(1.04);
+            }
+            .nav-strategy-link {
+                transform: scale(1.06);
+            }
+            .glass-header.is-sticky .nav-shell {
+                transform: scale(1);
+            }
+            .glass-header.is-sticky .nav-brand,
+            .glass-header.is-sticky .nav-strategy-link {
+                transform: scale(1);
+            }
         }
         .glass-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
@@ -224,9 +285,9 @@
 </head>
 <body class="bg-slate-50 text-slate-600 font-body antialiased overflow-x-hidden selection:bg-cyan-100 selection:text-navy-900">
 <div class="fixed top-0 left-0 h-1 bg-gradient-to-r from-cyan-400 to-primary z-[60]" id="scroll-progress" style="width: 0%"></div>
-<nav class="fixed w-full z-50 top-0 start-0 glass-header transition-all duration-300" id="navbar">
-<div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-<a class="flex items-center gap-3 group" href="#">
+<nav class="fixed w-full z-50 top-0 start-0 glass-header" id="navbar">
+<div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 nav-shell">
+<a class="flex items-center gap-3 group nav-brand" href="#">
 <div class="relative w-10 h-10 flex items-center justify-center">
 <div class="absolute inset-0 bg-primary/10 rounded-full blur-md group-hover:bg-primary/20 transition-all"></div>
 <svg class="w-8 h-8 text-navy-900 group-hover:text-primary transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +300,7 @@
 </div>
 </a>
 <div class="hidden md:flex">
-<a class="text-xs font-semibold uppercase tracking-widest text-navy-900 hover:text-primary transition-colors" href="#strategy">Estrategia</a>
+<a class="text-xs font-semibold uppercase tracking-widest text-navy-900 hover:text-primary transition-colors nav-strategy-link" href="#strategy">Estrategia</a>
 </div>
 </div>
 </nav>
@@ -668,17 +729,14 @@
             const scrollPercent = (scrollTop / scrollHeight) * 100;
             document.getElementById("scroll-progress").style.width = scrollPercent + "%";
         });
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-sm');
-                navbar.style.background = "rgba(255, 255, 255, 0.9)";
-            } else {
-                navbar.classList.remove('shadow-sm');
-                navbar.style.background = "rgba(255, 255, 255, 0.7)";
-            }
-        });
+        // Navbar appears as sticky only after scrolling past hero start
+        const navbar = document.getElementById('navbar');
+        const navbarThreshold = 12;
+        const updateNavbarState = () => {
+            navbar.classList.toggle('is-sticky', window.scrollY > navbarThreshold);
+        };
+        updateNavbarState();
+        window.addEventListener('scroll', updateNavbarState, { passive: true });
     });
 </script>
 </body></html>
